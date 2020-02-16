@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const URI = "mongodb+srv://victoraav2017:sudor00t@cluster0-nfhak.mongodb.net/test?retryWrites=true&w=majority";
+const URI = "DB";
 
 const CONFIG = {
 	useNewUrlParser: true,
