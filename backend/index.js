@@ -6,6 +6,7 @@ const port = 3000;
 const { mongoose } = require("./database");
 
 const employeeRouter = require("./routes/employee.routes");
+const userRouter = require("./routes/user.routes");
 
 // Settings
 app.set("port", process.env.PORT || port);
@@ -18,6 +19,7 @@ app.use(cors({
 }));
 // Routes
 app.use("/employee", employeeRouter);
+app.use("/user", userRouter);
 
 // Starting
 app.listen(app.get("port"), () => {
