@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-const employeeController = require("../controllers/employee.controller");
+const employeeController = require("../controllers/employees.controller");
 
 function verifyToken(req, res, next){
 	if (!req.headers.authorization){

@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Task</a>
+  <div class="container">
+  	  <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/tasks/public">Public</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/tasks/private">Private</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/employees">Employees</a>
+      </li>
+     </ul>
+  	  <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/users/signup">Signup</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/users/login">Login</a>
+      </li>
+     </ul>
+  </div>
+</nav>
+
+<div class="container p-5">
+	<router-outlet></router-outlet>
+</div>

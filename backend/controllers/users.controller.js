@@ -2,9 +2,9 @@ const express = require("express");
 const User = require("../models/User.model");
 const jwt = require("jsonwebtoken");
 
-const userController = {};
+const usersController = {};
 
-userController.loginUser =  async (req, res) =>{
+usersController.loginUser =  async (req, res) =>{
 	const { username, password } = req.body;
 	const user = await User.findOne({ username });
 
@@ -17,7 +17,7 @@ userController.loginUser =  async (req, res) =>{
 	return res.status(200).json({token});
 };
 
-userController.signupUser =  async (req, res) =>{
+usersController.signupUser =  async (req, res) =>{
 	const { username, password } = req.body;
 	const user = new User({
 		username,
@@ -29,7 +29,7 @@ userController.signupUser =  async (req, res) =>{
 	return res.status(200).json({token});
 };
 
-userController.getUser =  async (req, res) =>{
+usersController.getUser =  async (req, res) =>{
 	const { id }= req.params;
 
 	const user = await User.findById(id);
@@ -37,12 +37,12 @@ userController.getUser =  async (req, res) =>{
 	res.json(user);
 };
 
-userController.getUsers =  async (req, res) =>{
+usersController.getUsers =  async (req, res) =>{
 	const users = await User.find();
 	res.json(users);
 };
 
-userController.editUser = async (req, res) =>{
+usersController.editUser = async (req, res) =>{
 	const { id } = req.params;
 	const user = {
 		username: req.body.name,
@@ -56,10 +56,10 @@ userController.editUser = async (req, res) =>{
 	return res.status(200).json({token});
 };
 
-userController.deleteUser = async (req, res) =>{
+usersController.deleteUser = async (req, res) =>{
 	const { id }= req.params;
 	await User.findByIdAndRemove(id);
 	res.json({status: 200})
 };
 
-module.exports = userController;
+module.exports = usersController;

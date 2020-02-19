@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Employee } from "../models/employee";
+import { Employee } from "../../models/employee";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class EmployeeService {
+
+export class EmployeesService {
 
   selectedEmployee: Employee;
   employees: Employee[];
 
-  readonly URL_API = "http://localhost:3000/employee";
+  readonly URL_API = "http://localhost:4000/employees";
 
   constructor(private _http: HttpClient) {
     this.selectedEmployee = new Employee();

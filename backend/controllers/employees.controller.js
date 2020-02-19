@@ -1,21 +1,21 @@
 const express = require("express");
 const Employee = require("../models/Employee.model");
 
-const employeeController = {};
+const employeesController = {};
 
-employeeController.getEmployee =  async (req, res) =>{
+employeesController.getEmployee =  async (req, res) =>{
 	const { id }= req.params;
 	const employee = await Employee.findById(id);
 
 	res.json(employee);
 };
 
-employeeController.getEmployees =  async (req, res) =>{
+employeesController.getEmployees =  async (req, res) =>{
 	const employees = await Employee.find();
 	res.json(employees);
 };
 
-employeeController.createEmployee = async (req, res) =>{
+employeesController.createEmployee = async (req, res) =>{
 	const employee = new Employee({
 		name: req.body.name,
 		position: req.body.position,
@@ -26,7 +26,7 @@ employeeController.createEmployee = async (req, res) =>{
 	res.json({status: 200})
 };
 
-employeeController.editEmployee = async (req, res) =>{
+employeesController.editEmployee = async (req, res) =>{
 	const { id }= req.params;
 	const employee = {
 		name: req.body.name,
@@ -41,7 +41,7 @@ employeeController.editEmployee = async (req, res) =>{
 	res.json({status: 200})
 };
 
-employeeController.deleteEmployee = async (req, res) =>{
+employeesController.deleteEmployee = async (req, res) =>{
 	const { id }= req.params;
 	await Employee.findByIdAndRemove(id);
 	res.json({status: 200})
@@ -49,4 +49,4 @@ employeeController.deleteEmployee = async (req, res) =>{
 
 
 
-module.exports = employeeController;
+module.exports = employeesController;

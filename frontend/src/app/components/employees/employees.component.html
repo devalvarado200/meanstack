@@ -4,16 +4,16 @@
 <div class="card">
 <div class="card-content">
 <form #employeeForm="ngForm" (ngSubmit)="addEmployee(employeeForm)">
-	<input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="_employeeService.selectedEmployee._id">
+	<input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="_employeesService.selectedEmployee._id">
 <div class="row">
 <div class="input-field col s12">
-	<input type="text" name="name" #name="ngModel" [(ngModel)]="_employeeService.selectedEmployee.name" placeholder="Enter your name">
+	<input type="text" name="name" #name="ngModel" [(ngModel)]="_employeesService.selectedEmployee.name" placeholder="Enter your name">
 
-	<input type="text" name="position" #position="ngModel" [(ngModel)]="_employeeService.selectedEmployee.position" placeholder="Enter your position">
+	<input type="text" name="position" #position="ngModel" [(ngModel)]="_employeesService.selectedEmployee.position" placeholder="Enter your position">
 
-	<input type="text" name="office" #office="ngModel" [(ngModel)]="_employeeService.selectedEmployee.office" placeholder="Enter your office">
+	<input type="text" name="office" #office="ngModel" [(ngModel)]="_employeesService.selectedEmployee.office" placeholder="Enter your office">
 
-	<input type="text" name="salary" #salary="ngModel" [(ngModel)]="_employeeService.selectedEmployee.salary" placeholder="Enter your salary">
+	<input type="text" name="salary" #salary="ngModel" [(ngModel)]="_employeesService.selectedEmployee.salary" placeholder="Enter your salary">
 
 	<div class="card-action">
 		<div class="input-field col s12">
@@ -44,7 +44,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let employee of _employeeService.employees">
+			<tr *ngFor="let employee of _employeesService.employees">
 				<td>{{ employee.name }}</td>
             <td>{{ employee.position }}</td>
             <td>{{ employee.office }}</td>
