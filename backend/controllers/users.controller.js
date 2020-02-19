@@ -8,12 +8,14 @@ usersController.loginUser =  async (req, res) =>{
 	const { username, password } = req.body;
 	const user = await User.findOne({ username });
 
+	console.log(user);
+
 	if (!user) return res.status(401).send("this username dont exist");
 
 	if (user.password !== password) return res.status(401).send("wrong password");
 
 	const token = jwt.sign({ _id: user._id}, "secretKey");
-
+	console.log(token);
 	return res.status(200).json({token});
 };
 

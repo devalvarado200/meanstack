@@ -7,12 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserSignupComponent } from './components/users/user-signup/user-signup.component';
 import { UserLoginComponent } from './components/users/user-login/user-login.component';
-import { PrivateTaskComponent } from './components/tasks/private-task/private-task.component';
-import { PublicTaskComponent } from './components/tasks/public-task/public-task.component';
 import { UserRegisterComponent } from './components/users/user-register/user-register.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 
+import { UsersService } from "./services/users/users.service";
+import { EmployeesService } from "./services/employees/employees.service";
+import { UserAuthGuard } from "./user-auth.guard";
 
 @NgModule({
   declarations: [
@@ -20,8 +21,6 @@ import { EmployeesComponent } from './components/employees/employees.component';
     UserSignupComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    PrivateTaskComponent,
-    PublicTaskComponent,
     NavbarComponent,
     EmployeesComponent,
     
@@ -32,7 +31,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserAuthGuard, UsersService, EmployeesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

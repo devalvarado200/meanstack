@@ -4,10 +4,12 @@ const jwt = require("jsonwebtoken");
 
 const employeeController = require("../controllers/employees.controller");
 
-function verifyToken(req, res, next){
-	if (!req.headers.authorization){
-		return res.status(401).send("No auth");
-	}
+async function verifyToken(req, res, next){
+	console.log(req)
+	try {
+		if (!req.headers.authorization){
+			return res.status(401).send("No auth");
+		}
 
 	const token = req.headers.authorization.split(" ")[1];
 
@@ -16,10 +18,18 @@ function verifyToken(req, res, next){
 	}
 
 	const payload = jwt.verify(token, "secretKey");
-
+	if (!payload) {
+			return res.status(401).send('Unauhtorized Request');
+	}
 	req.userId = payload._id;
 	next();
 }
+
+	catch(e) {
+		//console.log(e)
+		return res.status(401).send('Unauhtorized Request');
+	}
+} 
 
 router.get("/", verifyToken, employeeController.getEmployees);
 router.get("/:id", verifyToken, employeeController.getEmployee);
